@@ -129,7 +129,7 @@ var app = (function () {
                 return usersModel.load();
             })
             .then(function () {
-                mobileApp.navigate('views/activitiesView.html');
+                mobileApp.navigate('views/feedView.html');
             })
             .then(null,
                   function (err) {
@@ -146,7 +146,7 @@ var app = (function () {
                 })
                 .then(function () {
                     mobileApp.hideLoading();
-                    mobileApp.navigate('views/activitiesView.html');
+                    mobileApp.navigate('views/feedView.html');
                 })
                 .then(null, function (err) {
                     mobileApp.hideLoading();
@@ -297,6 +297,114 @@ var app = (function () {
         };
     }());
 
+    var EventsModel = (function () {
+        var EventModel = {
+            id: 'Id',
+            fields: {
+                Title: {
+                    field: 'Title',
+                    defaultValue: ''
+                },
+                CreatedAt: {
+                    field: 'CreatedAt',
+                    defaultValue: new Date()
+                },
+                Description: {
+                    field: 'Description',
+                    defaultValue: ''
+                },
+                StartTime: {
+                    field: 'StartTime',
+                    defaultValue: new Date()
+                },
+                Organizer: {
+                    field: 'Organizer',
+                    defaultValue: ""
+                },
+                Participants: {
+                    field: 'Participants',
+                    defaultValue: ""
+                },
+                MaxParticipants: {
+                    field: 'MaxParticipants',
+                    defaultValue: ""
+                },
+                CoverImage: {
+                    field: 'CoverImage',
+                    defaultValue: ''
+                },
+                LocationDescription: {
+                    field: 'LocationDescription',
+                    defaultValue: ''
+                },
+                LocationCoordinates: {
+                    field: 'LocationCoordinates',
+                    defaultValue: ''
+                },
+                Tags: {
+                    field: 'Tags',
+                    defaultValue: []
+                }
+                
+            },
+            CreatedAtFormatted: function () {
+                return AppHelper.formatDate(this.get('CreatedAt'));
+            },
+            StartTimeFormatted: function () {
+                return AppHelper.formatDate(this.get('StartTime'));
+            },
+            CoverImageURL: function () {
+                return AppHelper.resolvePictureUrl(this.get('CoverImage'));
+            }
+        };
+        var eventsDataSource = new kendo.data.DataSource({
+            type: 'everlive',
+            schema: {
+                model: EventModel
+            },
+            transport: {
+                // required by Everlive
+                typeName: 'Event'
+            },
+            change: function (e) {
+                if (e.items && e.items.length > 0) {
+                    $('#no-activities-span').hide();
+                }
+                else {
+                    $('#no-activities-span').show();
+                }
+            },
+            sort: { field: 'CreatedAt', dir: 'desc' }
+        });
+        return {
+            events: eventsDataSource
+        };
+    }());
+    
+    // feed view model
+    var feedViewModel = (function () {
+        /*
+        var activitySelected = function (e) {
+            mobileApp.navigate('views/activityView.html?uid=' + e.data.uid);
+        };
+        var navigateHome = function () {
+            mobileApp.navigate('#welcome');
+        };
+        var logout = function () {
+            AppHelper.logout()
+            .then(navigateHome, function (err) {
+                showError(err.message);
+                navigateHome();
+            });
+        };
+        */
+        return {
+            feed: EventsModel.events
+            //activitySelected: activitySelected,
+            //logout: logout
+        };
+    }());
+    
     // activity details view model
     var activityViewModel = (function () {
         return {
@@ -345,7 +453,8 @@ var app = (function () {
             signup: singupViewModel,
             activities: activitiesViewModel,
             activity: activityViewModel,
-            addActivity: addActivityViewModel
+            addActivity: addActivityViewModel,
+            feed: feedViewModel
         }
     };
 }());
