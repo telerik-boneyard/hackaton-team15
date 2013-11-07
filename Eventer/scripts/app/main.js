@@ -36,7 +36,7 @@ var app = (function () {
 
     var applicationSettings = {
         emptyGuid: '00000000-0000-0000-0000-000000000000',
-        apiKey: 'qrO35W3Msj8Zowin',
+        apiKey: 'x0JGkn5LGo9RHsjo',
         scheme: 'http'
     };
 
