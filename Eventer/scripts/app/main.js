@@ -121,10 +121,11 @@ var app = (function () {
     // login view model
     var loginViewModel = (function () {
         var login = function () {
-            var username = $('#loginUsername').val();
-            var password = $('#loginPassword').val();
+            //var username = $('#loginUsername').val();
+            //var password = $('#loginPassword').val();
 
-            el.Users.login(username, password)
+            //el.Users.login(username, password)
+            el.Users.login("richard", "hack15")
             .then(function () {
                 return usersModel.load();
             })
