@@ -388,7 +388,7 @@ var app = (function () {
             $eventDescription = $('#eventDescription');
             $eventMaxParticipants = $('#eventMaxParticipants');
             $eventLocationDescription = $('#eventLocationDescription');
-            $eventLocationCoordinates = $('#eventLocationCoordinates');
+            //$eventLocationCoordinates = $('#eventLocationCoordinates');
             $eventTags = $('#eventTags');
         };
         var show = function () {
@@ -397,7 +397,7 @@ var app = (function () {
             $eventDescription.val("");
             $eventMaxParticipants.val("unlimited");
             $eventLocationDescription.val("");
-            $eventLocationCoordinates.val("");
+            //$eventLocationCoordinates.val("");
             $eventTags.val("");
             validator.hideMessages();
         };
@@ -410,17 +410,18 @@ var app = (function () {
               ev.Title = $eventTitle.val();
               ev.StartTime = $eventStartTime.val();
               ev.Description = $eventDescription.val();
-              ev.MaxParticipants = ($eventMaxParticipants == '' || $eventMaxParticipants == 'unlimited') ? 0 : parseInt($eventMaxParticipants);
+              ev.MaxParticipants = ($eventMaxParticipants == '' || $eventMaxParticipants == 'unlimited') ? 0 : parseInt($eventMaxParticipants.val());
               ev.LocationDescription = $eventLocationDescription.val();
-              ev.LocationCoordinates = $eventLocationCoordinates.val();
+              //ev.LocationCoordinates = $eventLocationCoordinates.val();
               ev.Tags = $eventTags.val().split(" ");
               ev.Feed = '9dec1eb0-47ca-11e3-afbf-61834747fc11'; // hardcoded for now
-              ev.Organizer = this.me.uid;
+              ev.Organizer = this.me.data.Id;
 //              for (var p in ev)
 //                  console.log("  ev." + p + ": " + ev[p]);
-//              for (var p2 in this.me)
-//                console.log("  me." + p2 + ": " + this.me[p2]);                
+//              for (var p2 in this.me.data)
+//                console.log("  me.data." + p2 + ": " + this.me.data[p2]);                
               events.sync();
+              mobileApp.navigate('#:back');
               // or ???? events.one('sync', function () {mobileApp.navigate('#:back');});
             }
         };
