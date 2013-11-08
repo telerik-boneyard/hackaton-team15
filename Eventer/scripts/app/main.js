@@ -121,10 +121,11 @@ var app = (function () {
     // login view model
     var loginViewModel = (function () {
         var login = function () {
-            var username = $('#loginUsername').val();
-            var password = $('#loginPassword').val();
+            //var username = $('#loginUsername').val();
+            //var password = $('#loginPassword').val();
 
-            el.Users.login(username, password)
+            //el.Users.login(username, password)
+            el.Users.login("richard", "hack15")
             .then(function () {
                 return usersModel.load();
             })
@@ -355,6 +356,19 @@ var app = (function () {
             },
             CoverImageURL: function () {
                 return AppHelper.resolvePictureUrl(this.get('CoverImage'));
+            },
+            ParticipantsCount: function () {
+                var userId = this.get('UserId');
+                var user = $.grep(usersModel.users(), function (e) {
+                    return e.Id === userId;
+                })[0];
+                return user ? {
+                    DisplayName: user.DisplayName,
+                    PictureUrl: AppHelper.resolveProfilePictureUrl(user.Picture)
+                } : {
+                    DisplayName: 'Anonymous',
+                    PictureUrl: AppHelper.resolveProfilePictureUrl()
+                };
             }
         };
         var eventsDataSource = new kendo.data.DataSource({
@@ -383,10 +397,10 @@ var app = (function () {
     
     // feed view model
     var feedViewModel = (function () {
-        /*
-        var activitySelected = function (e) {
-            mobileApp.navigate('views/activityView.html?uid=' + e.data.uid);
+        var eventSelected = function (e) {
+            mobileApp.navigate('views/eventView.html?uid=' + e.data.uid);
         };
+        /*
         var navigateHome = function () {
             mobileApp.navigate('#welcome');
         };
@@ -399,9 +413,39 @@ var app = (function () {
         };
         */
         return {
-            feed: EventsModel.events
-            //activitySelected: activitySelected,
+            feed: EventsModel.events,
+            eventSelected: eventSelected
             //logout: logout
+        };
+    }());
+
+    // event details view model
+    var eventViewModel = (function () {
+        var joinOrCancel;
+        
+        function joinCancel(e) {
+            // Here you can write the logic for cancel and joining an event // Richard
+            joinOrCancel ? console.log("join") : console.log("cancel");
+        }
+        
+        return {
+            show: function (e) {
+                var event = EventsModel.events.getByUid(e.view.params.uid),
+                me = usersModel.currentUser.get('data').Id,
+                btn = $("#joinBtn"),
+                user;
+                
+                kendo.bind(e.view.element, event, kendo.mobile.ui);
+                
+                user = $.grep(usersModel.users(), function (e) {
+                    return me === event.Organizer;
+                })[0];
+                
+                user ? joinOrCancel = false : joinOrCancel = true;
+                user ? btn.text("Cancel") : btn.text("Join!");
+                
+                btn.kendoTouch({ tap: function (e) { joinCancel() } });
+            }
         };
     }());
     
@@ -454,7 +498,8 @@ var app = (function () {
             activities: activitiesViewModel,
             activity: activityViewModel,
             addActivity: addActivityViewModel,
-            feed: feedViewModel
+            feed: feedViewModel,
+            event: eventViewModel
         }
     };
 }());
