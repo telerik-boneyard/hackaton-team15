@@ -358,6 +358,11 @@ var app = (function () {
                 user ? btn.text("Cancel") : btn.text("Join!");
                 
                 btn.kendoTouch({ tap: function (e) { joinCancel() } });
+                $("body").kendoTouch({ enableSwipe: true, swipe: function (e) {
+                    if(e.direction === "right") {
+                        mobileApp.navigate('#:back');
+                    }
+                } });
             }
         };
     }());
