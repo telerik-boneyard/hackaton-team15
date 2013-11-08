@@ -555,8 +555,9 @@ textarea
     background-color: #fff;
     background-image: none;
     background-repeat: no-repeat;
-    background-size: 13px 12px;
-    background-image: url(images/icons/mag_icon.png);
+    background-size: 12px 15px;
+    height: 20px;
+    background-image: url(images/icons/add_new_icon.png);
     border-radius: 0px;
     top: 8px;
 }
