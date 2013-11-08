@@ -2,7 +2,7 @@
     <header data-role="header">
         <div data-role="navbar">
             Feed
-            <a class="nav-button" data-align="left" data-role="backbutton" data-click="app.viewModels.activities.logout">Log out</a>
+            <a class="nav-button" data-align="left" data-role="backbutton" data-click="app.viewModels.feed.logout">Log out</a>
             <a class="nav-button" data-align="right" data-role="button" data-icon="add" href="views/addActivityView.html"></a>
         </div>
     </header>
@@ -15,7 +15,7 @@
     </p>
 </div>
 
-<!-- Activities ListView Template -->
+<!-- Events ListView Template -->
 <script type="text/x-kendo-template" id="activityTemplate">
     <div data-role="touch" data-bind="events: { tap: eventSelected }">
         <div class="user-info">

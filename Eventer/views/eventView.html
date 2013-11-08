@@ -21,6 +21,12 @@
         <div class="event-white-box">
             <button id="joinBtn" class="event-join-btn">Join!</button>
         </div>
+        <div class="event-white-box part">
+            <span class="part-count" data-bind="text: ParticipantsCount()"></span>
+            <span class="max-part-count">/</span>
+            <span class="max-part-count" data-bind="text: MaxParticipants"></span>
+        </div>
+        
         <!--
         <div class="user-info">
             <img data-bind="attr:{src: User().PictureUrl}" alt="styles/images/avatar.png" />
