@@ -523,6 +523,7 @@ textarea
 }
 
 .part-count {
+    font-weight: bold;
     font-size: 1.3rem;
 }
 
@@ -557,5 +558,23 @@ textarea
     background-size: 13px 12px;
     background-image: url(images/icons/mag_icon.png);
     border-radius: 0px;
-    top: 8px;    
+    top: 8px;
+}
+
+.time-icon {
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-image: url(images/icons/clock_icon.png);
+    line-height: 17px;
+    padding-left: 20px;
+}
+
+.location-icon {
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: 12px 16px;
+    background-image: url(images/icons/location_icon.png);
+    line-height: 17px;
+    padding-left: 20px;
 }

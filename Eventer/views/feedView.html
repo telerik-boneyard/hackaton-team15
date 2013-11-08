@@ -18,9 +18,14 @@
 <!-- Events ListView Template -->
 <script type="text/x-kendo-template" id="activityTemplate">
     <div data-role="touch" data-bind="events: { tap: eventSelected }">
-        <div class="user-info">
+        <div class="user-info" style="height: 35px;">
             <h2>${Title}</h2>
-            <time class="timeSpan">${StartTimeFormatted()}</time>
+            <div style="float: left; line-height: 30px; height: 50px;">
+                <span class="part-count" data-bind="text: ParticipantsCount()"></span>
+                <span class="max-part-count">/</span>
+                <span class="max-part-count" data-bind="text: MaxParticipants"></span>
+            </div>
+            <time class="timeSpan time-icon" style="float: right;">${StartTimeFormatted()}</time>
         </div>
         <div>
 			<img src="${CoverImageURL()}" style="width: 292px; height: 140px;" />

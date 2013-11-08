@@ -2,7 +2,7 @@
     <script>
     </script>
     <header data-role="header">
-        <div data-role="navbar">
+        <div data-role="navbar" style="top: 10px;">
             Event
         </div>
     </header>
@@ -13,9 +13,9 @@
             <span data-bind="text: Title" class="event-title"></span>
         </div>
         <div class="event-white-box" style="padding: 0;">
-            <span data-bind="text: LocationDescription" class="event-title-desc"></span>
+            <span data-bind="text: LocationDescription" class="event-title-desc location-icon"></span>
             <br />
-            <span data-bind="text: StartTimeFormatted()" class="event-title-desc"></span>
+            <span data-bind="text: StartTimeFormatted()" class="event-title-desc time-icon"></span>
         </div>
         <div class="event-white-box">
             <button id="joinBtn" class="event-join-btn">Join!</button>
