@@ -520,6 +520,10 @@ textarea
     padding-right: 3em;
     font-size: 1.3em;
     font-weight: normal;
+    background-color: #00bbb3;
+    border: none;
+    border-radius: 5px;
+    color: white;
 }
 
 .part-count {
