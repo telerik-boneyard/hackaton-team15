@@ -629,3 +629,33 @@ background-color: #A36A57;
 } 
 
 /* Team15 code starts here */
+
+.event-white-box {
+    padding: 1rem;
+    background-color: #fff;
+    clear: both;
+    color: #000 !important;
+    font-size: 1rem;
+    line-height: 1.4;
+    
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);       
+    text-align: center;
+}
+
+.event-title {
+    font-size: 1.5rem;
+}
+
+.event-title-desc {
+    font-size: 1rem;
+}
+
+.event-join-btn
+{
+    padding: .5em .5em;
+    padding-left: 3em;
+    padding-right: 3em;
+    font-size: 1.3em;
+    font-weight: normal;
+}
