@@ -21,6 +21,16 @@
         <div class="event-white-box">
             <button id="joinBtn" class="event-join-btn">Join!</button>
         </div>
+        <div class="event-white-box part">
+            <span class="part-count" data-bind="text: ParticipantsCount()"></span>
+            <span class="max-part-count">/</span>
+            <span class="max-part-count" data-bind="text: MaxParticipants"></span>
+        </div>
+        <div style="background: white; float: left; width: 210px">
+            <img src="http://api.everlive.com/v1/x0JGkn5LGo9RHsjo/Files/835b7d40-480e-11e3-81ba-e551d52aa73d/Download" class="part-pic" />
+            <img src="http://api.everlive.com/v1/x0JGkn5LGo9RHsjo/Files/8fe66570-480e-11e3-9f50-d779695f113f/Download" class="part-pic" />
+        </div>
+        
         <!--
         <div class="user-info">
             <img data-bind="attr:{src: User().PictureUrl}" alt="styles/images/avatar.png" />
