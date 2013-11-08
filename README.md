@@ -1,11 +1,15 @@
-hackaton-team15
+Whee - see you there
 ===============
 
-The winning app of the 2013 Telerik Hackaton :-)
+*Find a friend to hang out with. Right from your phone.*
 
-#Useful links
+Whee is a a social app for quickly setting up events and do stuff with current or future friends. 
 
-  - The [working document](https://docs.google.com/document/d/1G9MNAE-Feob7hcRrKMs-UE7wfTOXQs8lWXkcVwga5E8/edit#) on google
+  - Visit the [marketing site](http://vaskess.wix.com/whee)
+
+####Links for team members
+
+  - The [design document](https://docs.google.com/document/d/1G9MNAE-Feob7hcRrKMs-UE7wfTOXQs8lWXkcVwga5E8/edit#)
   - The [Trello board](https://trello.com/b/m9XDK3gF/telerik-hackaton)
   - The [UXPin](http://app.uxpin.com/dms/Collections/Show/79750)
 
