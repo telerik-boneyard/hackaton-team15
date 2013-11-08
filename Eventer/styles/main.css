@@ -548,10 +548,10 @@ textarea
     background-image: url(images/icons/menu_icon.png);
     border-radius: 0px;
     left: 10px;
-    top: 8px;
+    top: 10px;
 }
 
-#search-btn {
+#add-new-btn {
     background-color: #fff;
     background-image: none;
     background-repeat: no-repeat;
@@ -578,4 +578,22 @@ textarea
     background-image: url(images/icons/location_icon.png);
     line-height: 17px;
     padding-left: 20px;
+}
+
+#cancelButton {
+    position: absolute;
+    left: 8px;
+    top: 13px;
+    font-size: 15px;
+    color: #00bbb3;
+    cursor: pointer;
+}
+
+#doneButton {
+    position: absolute;
+    right: 8px;
+    top: 13px;
+    font-size: 15px;
+    color: #00bbb3;
+    cursor: pointer;
 }

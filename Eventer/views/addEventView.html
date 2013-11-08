@@ -1,10 +1,10 @@
 <div data-role="view" id="add-event" data-layout="default" class="add-event-view" data-model="app.viewModels.addEvent"
     data-init="app.viewModels.addEvent.init" data-show="app.viewModels.addEvent.show">
     <header data-role="header">
-        <div data-role="navbar">
+        <div data-role="navbar" style="top: 10px;">
             Add Event
-            <a data-align="left" data-role="backbutton">Cancel</a>
-            <a data-align="right" data-role="button" data-bind="click: saveEvent">Done</a>
+            <a data-align="left" data-bind="click: backButton" id="cancelButton" >Cancel</a>
+            <a data-align="right" data-bind="click: saveEvent" id="doneButton">Done</a>
         </div>
     </header>
     

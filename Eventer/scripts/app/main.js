@@ -437,11 +437,15 @@ var app = (function () {
               // or ???? events.one('sync', function () {mobileApp.navigate('#:back');});
             }
         };
+        var backButton = function() {
+            mobileApp.navigate('#:back');
+        }
         return {
             init: init,
             show: show,
             me: usersModel.currentUser,
-            saveEvent: saveEvent
+            saveEvent: saveEvent,
+            backButton: backButton
         };
     }());
 
