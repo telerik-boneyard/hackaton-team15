@@ -267,7 +267,9 @@ var app = (function () {
                 return AppHelper.resolvePictureUrl(this.get('CoverImage'));
             },
             CoverImageDisplay: function () {
-                return this.get('CoverImage') !== undefined ? "block" : "none";
+                var image = this.get('CoverImage');
+                var hasImage =  image != "" && image !== undefined;
+                return hasImage ? "block" : "none";
             },            
             ParticipantsCount: function () {
                 var participants = this.get('Participants');
