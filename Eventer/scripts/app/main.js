@@ -315,9 +315,12 @@ var app = (function () {
         var eventSelected = function (e) {
             mobileApp.navigate('views/eventView.html?uid=' + e.data.uid);
         };
+        
+        /*
         var navigateHome = function () {
             mobileApp.navigate('#welcome');
         };
+        
         var logout = function () {
             AppHelper.logout()
             .then(navigateHome, function (err) {
@@ -325,10 +328,11 @@ var app = (function () {
                 navigateHome();
             });
         };
+        */
         return {
             feed: EventsModel.events,
             eventSelected: eventSelected,
-            logout: logout
+            //logout: logout
         };
     }());
 
