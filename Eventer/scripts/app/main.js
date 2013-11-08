@@ -268,7 +268,8 @@ var app = (function () {
             },
             ParticipantsCount: function () {
                 var participants = this.get('Participants');
-                return participants.length;
+                //return participants.length;
+                return 2;
             },
             ParticipantsAvatars: function () {
                 var participants = this.get('Participants'),
@@ -281,6 +282,7 @@ var app = (function () {
                     }
                 });
                 
+                console.log(avatars);
                 return avatars;
             }
         };
@@ -356,8 +358,6 @@ var app = (function () {
                 user ? btn.text("Cancel") : btn.text("Join!");
                 
                 btn.kendoTouch({ tap: function (e) { joinCancel() } });
-                
-                //event.ParticipantsCount();
             }
         };
     }());

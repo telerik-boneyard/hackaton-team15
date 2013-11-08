@@ -539,3 +539,11 @@ textarea
 .max-part-count {
     font-size: .9rem;
 }
+
+.part-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    float: left;
+    margin: 5px;
+}
