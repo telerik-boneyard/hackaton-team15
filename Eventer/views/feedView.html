@@ -4,6 +4,7 @@
             <div class="nav-button"  data-align="left" data-role="button" id="swipe-menu-btn"></div>
             Event Feed
             <div class="nav-button"  data-align="right" data-role="button" id="search-btn"></div>
+            <a class="nav-button" data-align="right" data-role="button" href="views/addEventView.html">Add</a>
         </div>
     </header>
 
@@ -28,7 +29,7 @@
             <time class="timeSpan time-icon" style="float: right;">${StartTimeFormatted()}</time>
         </div>
         <div>
-			<img src="${CoverImageURL()}" style="width: 292px; height: 140px;" />
+			<img src="${CoverImageURL()}" style="width: 292px; height: 140px; display:${CoverImageDisplay()}}" />
 		</div>
         <div class="user-share">
             <a class="user-share-txt">${Description}</a>

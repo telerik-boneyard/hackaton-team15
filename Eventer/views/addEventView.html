@@ -1,0 +1,51 @@
+<div data-role="view" id="add-event" data-layout="default" class="add-event-view" data-model="app.viewModels.addEvent"
+    data-init="app.viewModels.addEvent.init" data-show="app.viewModels.addEvent.show">
+    <header data-role="header">
+        <div data-role="navbar">
+            Add Event
+            <a data-align="left" data-role="backbutton">Cancel</a>
+            <a data-align="right" data-role="button" data-bind="click: saveEvent">Done</a>
+        </div>
+    </header>
+    
+    <form id="add-event-form">
+        <ul data-role="listview" data-style="inset">
+            <li>
+                <label for="eventTitle">What</label>
+                <input type="text" id="eventTitle" placeholder="What's happening?" data-bind="value: Title"/> <!--required validationMessage="Please choose a name for your event"/-->
+            </li>
+            <li>
+                <label for="eventLocationDescription">Where</label>
+                <input type="text" id="eventLocationDescription" placeholder="Where to meet?" data-bind="value: LocationDescription"/>
+            </li>
+            <li style="margin-top:20px;">
+                <label for="eventStartTime">All-day</label>
+                <input type="checkbox" data-role="switch" id="eventAllDay" /><!--data-bind="value: AllDay"/-->
+            </li>
+            <li>
+                <label for="eventStartTime">Starts</label>
+                <input type="date" id="eventStartTime" data-bind="value: StartTime"/>
+            </li>
+            <li>
+                <label for="eventEndTime">Ends</label>
+                <input type="date" id="eventEndTime" data-bind="value: EndTime"/>
+            </li>
+            <li style="margin-top:20px;">
+                <label for="eventDescription">More info</label>
+                <input type="text" id="eventDescription" placeholder="Details, links, etc" data-bind="value: Description"/>
+            </li>
+            <li>
+                <label for="eventMaxParticipants">May join</label>
+                <input type="text" id="eventMaxParticipants" placeholder="unlimited" data-bind="value: MaxParticipants"/>
+            </li>
+            <!--<li>
+                <label for="eventLocationCoordinates">On the map</label>
+                <input type="text" id="eventLocationCoordinates" data-bind="value: LocationCoordinates"/>
+            </li>-->
+            <li>
+                <label for="eventTags">#Tags</label>
+                <input type="text" id="eventTags" placeholder="#lunch #italian" data-bind="value: Tags"/>
+            </li>
+        </ul>
+    </form>
+</div>
