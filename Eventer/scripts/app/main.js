@@ -363,34 +363,63 @@ var app = (function () {
     }());
 
     // add activity view model
-    var addActivityViewModel = (function () {
-        var $newStatus;
+    var addEventViewModel = (function () {
+        var $eventTitle;
+        var $eventStartTime;
+        var $eventDescription;
+        var $eventMaxParticipants;
+        var $eventLocationDescription;
+        var $eventLocationCoordinates;
+        var $eventTags;
         var validator;
         var init = function () {
-            validator = $('#enterStatus').kendoValidator().data("kendoValidator");
-            $newStatus = $('#newStatus');
+            validator = $('#add-event-form').kendoValidator().data("kendoValidator");
+            $eventTitle = $('#eventTitle');
+            $eventStartTime = $('#eventStartTime');
+            $eventDescription = $('#eventDescription');
+            $eventMaxParticipants = $('#eventMaxParticipants');
+            $eventLocationDescription = $('#eventLocationDescription');
+            $eventLocationCoordinates = $('#eventLocationCoordinates');
+            $eventTags = $('#eventTags');
         };
         var show = function () {
-            $newStatus.val('');
+            $eventTitle.val("");
+            $eventStartTime.val(new Date().toJSON().slice(0,10));
+            $eventDescription.val("");
+            $eventMaxParticipants.val("unlimited");
+            $eventLocationDescription.val("");
+            $eventLocationCoordinates.val("");
+            $eventTags.val("");
             validator.hideMessages();
         };
-        var saveActivity = function () {
-            if (validator.validate()) {
-                var activities = activitiesModel.activities;
-                var activity = activities.add();
-                activity.Text = $newStatus.val();
-                activity.UserId = usersModel.currentUser.get('data').Id;
-                activities.one('sync', function () {
-                    mobileApp.navigate('#:back');
-                });
-                activities.sync();
+        var saveEvent = function () {
+            /// todo include this if (validator.validate())
+            {
+              // add a new item
+              var events = EventsModel.events;
+              var ev = events.add();
+              ev.Title = $eventTitle.val();
+              ev.StartTime = $eventStartTime.val();
+              ev.Description = $eventDescription.val();
+              ev.MaxParticipants = ($eventMaxParticipants == '' || $eventMaxParticipants == 'unlimited') ? 0 : parseInt($eventMaxParticipants);
+              ev.LocationDescription = $eventLocationDescription.val();
+              ev.LocationCoordinates = $eventLocationCoordinates.val();
+              ev.Tags = $eventTags.val().split(" ");
+              ev.Feed = '9dec1eb0-47ca-11e3-afbf-61834747fc11'; // hardcoded for now
+              ev.Organizer = this.me.uid;
+//              for (var p in ev)
+//                  console.log("  ev." + p + ": " + ev[p]);
+//              for (var p2 in this.me)
+//                console.log("  me." + p2 + ": " + this.me[p2]);                
+              events.sync();
+              // or ???? events.one('sync', function () {mobileApp.navigate('#:back');});
             }
         };
         return {
             init: init,
             show: show,
             me: usersModel.currentUser,
-            saveActivity: saveActivity
+            saveEvent: saveEvent
         };
     }());
 
@@ -398,7 +427,7 @@ var app = (function () {
         viewModels: {
             login: loginViewModel,
             signup: singupViewModel,
-            addActivity: addActivityViewModel,
+            addEvent: addEventViewModel,
             feed: feedViewModel,
             event: eventViewModel
         }
