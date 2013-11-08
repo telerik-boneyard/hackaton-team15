@@ -1,0 +1,53 @@
+<div data-role="view" id="add-event" data-layout="default" class="add-event-view" data-model="app.viewModels.addEvent"
+    data-init="app.viewModels.addEvent.init" data-show="app.viewModels.addEvent.show">
+    <header data-role="header">
+        <div data-role="navbar">
+            Activity
+            <a class="nav-button" data-align="left" data-role="backbutton">Cancel</a>
+            <a class="nav-button" data-align="right" data-role="button" data-bind="click: saveActivity">Post</a>
+        </div>
+    </header>
+    
+    <form>
+        <ul id="add-event-form" data-role="listview" data-style="inset">
+            <li>
+                <label for="eventTitle">Name of event</label>
+                <input type="text" id="eventTitle" data-bind="value: Title" required validationMessage="Please choose a name for your event"/>
+            </li>
+            <li>
+                <label for="eventStartTime">Date and time</label>
+                <input type="date" id="eventStartTime" data-bind="value: StartTime" required validationMessage="Please choose when your event takes place"/>
+            </li>
+            <li>
+                <span>More info about your event</span>
+            </li>
+            <li>
+                <label for="eventDescription">Description</label>
+                <textarea type="text" id="eventDescription" data-bind="value: Description"/>
+            </li>
+            <li>
+                <label for="eventMaxParticipants">Limited seats</label>
+                <input type="text" id="eventMaxParticipants" data-bind="value: MaxParticipants"/>
+            </li>
+            <li>
+                <label for="eventLocationDescription">Password</label>
+                <input type="text" id="eventLocationDescription" data-bind="value: LocationDescription"/>
+            </li>
+            <li>
+                <label for="eventLocationCoordinates">Password</label>
+                <input type="text" id="eventLocationCoordinates" data-bind="value: LocationCoordinates"/>
+            </li>
+            <li>
+                <label for="eventLocationCoordinates">Password</label>
+                <input type="text" id="eventLocationCoordinates" data-bind="value: LocationCoordinates"/>
+            </li>
+            <li>
+                <label for="eventTags">Tags</label>
+                <input type="text" id="eventTags" data-bind="value: Tags"/>
+            </li>
+        </ul>
+    </form>
+    <div class="event-add-btn">
+        <a class="btn-signup btn-big" data-role="button" data-bind="click: confirmAddEvent">Publish this event</a>
+    </div>    
+</div>
