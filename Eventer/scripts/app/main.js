@@ -374,17 +374,21 @@ var app = (function () {
     // add activity view model
     var addEventViewModel = (function () {
         var $eventTitle;
+        var $eventAllDay;
         var $eventStartTime;
+        var $eventEndTime;
         var $eventDescription;
         var $eventMaxParticipants;
         var $eventLocationDescription;
-        var $eventLocationCoordinates;
+        //var $eventLocationCoordinates;
         var $eventTags;
         var validator;
         var init = function () {
             validator = $('#add-event-form').kendoValidator().data("kendoValidator");
             $eventTitle = $('#eventTitle');
+            $eventAllDay = $('#eventAllDay');
             $eventStartTime = $('#eventStartTime');
+            $eventEndTime = $('#eventEndTime');
             $eventDescription = $('#eventDescription');
             $eventMaxParticipants = $('#eventMaxParticipants');
             $eventLocationDescription = $('#eventLocationDescription');
@@ -394,8 +398,9 @@ var app = (function () {
         var show = function () {
             $eventTitle.val("");
             $eventStartTime.val(new Date().toJSON().slice(0,10));
+            $eventEndTime.val(new Date().toJSON().slice(0,10));
             $eventDescription.val("");
-            $eventMaxParticipants.val("unlimited");
+            $eventMaxParticipants.val("");
             $eventLocationDescription.val("");
             //$eventLocationCoordinates.val("");
             $eventTags.val("");
@@ -409,6 +414,7 @@ var app = (function () {
               var ev = events.add();
               ev.Title = $eventTitle.val();
               ev.StartTime = $eventStartTime.val();
+                // todo ev.EndTime and AllDay
               ev.Description = $eventDescription.val();
               ev.MaxParticipants = ($eventMaxParticipants == '' || $eventMaxParticipants == 'unlimited') ? 0 : parseInt($eventMaxParticipants.val());
               ev.LocationDescription = $eventLocationDescription.val();
